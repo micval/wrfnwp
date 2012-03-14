@@ -9,6 +9,7 @@ print_log_message "Starting $0: Data preprocessing"
 
 if [ ! -d $MY_WORK_DIR/wps ]; then
     mkdir -p $MY_WORK_DIR/wps
+    cp -Rd $WRF_SRC_PATH/WPS/* $MY_WORK_DIR/wps
 fi
 
 cd $MY_WORK_DIR/wps

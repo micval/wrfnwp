@@ -5,7 +5,7 @@ if [ "$MY_DATA_DIR" == "" -o "$SIMULATION_TIMESPAN"=="" -o "$GFS_TIMESTEP" == ""
     exit
 fi
 
-echo "### "`date`" Starting $0: GFS data download"
+print_log_message "Starting $0: GFS data download"
 
 if [ ! -d $MY_DATA_DIR/gfs2 ]; then
     mkdir -p $MY_DATA_DIR/gfs2
