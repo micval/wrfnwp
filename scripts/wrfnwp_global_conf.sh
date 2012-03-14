@@ -1,6 +1,25 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-echo "### "`date`" Starting $0: Global configuration settings"
+function print_log_message {
+    if [ "$2" == "" ]; then
+        level="INFO"
+    else
+        level=$2
+    fi
+
+    echo "### "`printf %5s $level`": "`date`" "$1
+}
+
+function check_true_value {
+    arg=`echo $1 |tr [:upper:] [:lower:]`
+    if [ "$arg" == "1" -o "$arg" == "yes" -o "$arg" == "true" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+print_log_message "Starting $0: Global configuration settings"
 
 export GFS_DATA_URL="ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod"
 export GFS_TIMESTEP=3

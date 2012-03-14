@@ -1,12 +1,10 @@
-#!/bin/bash
-
-echo "### "`date`" Starting job $0: WRF NWP run"
+#!/bin/bash -x
 
 . ./wrfnwp_global_conf.sh
 . ./wrfnwp_local_conf.sh
 
 PROJECT=wrfnwp
-EXP=wrf_run_cecilia_domain_10km
+EXP=daily_run_cecilia_domain_10km
 MY_WORK_DIR=$PROJECTS_DIR/$PROJECT/$EXP
 MY_DATA_DIR=$LOCAL_DATA_DIR/$PROJECT/
 
@@ -14,6 +12,8 @@ export PROJECT
 export EXP
 export MY_WORK_DIR
 export MY_DATA_DIR
+
+print_log_message "Starting job $0: $PROJECT $EXP run"
 
 y=$(date '+%Y')
 m=$(date '+%m')

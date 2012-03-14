@@ -2,9 +2,10 @@
 
 if [ "$MY_WORK_DIR" == "" ]; then
     echo "### $0 : configuration variables not set - this script must be run from the jobdeck!"
+    exit
 fi
 
-echo "### "`date`" Starting $0: Data preprocessing"
+print_log_message "Starting $0: Data preprocessing"
 
 if [ ! -d $MY_WORK_DIR/wps ]; then
     mkdir -p $MY_WORK_DIR/wps
@@ -59,7 +60,6 @@ cat > namelist.wps  <<EOF_DATE
 /
 
 EOF_DATE
-#konec editace namelist.wps
 
 ./geogrid.exe
 ./ungrib.exe
